@@ -11,7 +11,7 @@ This bot can send all new messages from one channel, directly to another channel
 > `FROM_CHANNEL` - The ID of the main channel from where posts have to be copied. (Use @chnlidbot to get it.)   
 > `TO_CHANNEL` - The ID of the channel to which the posts are to be sent. (Use @chnlidbot to get it.)   
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/xditya/ChannelAutoPost)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/soymadip/ChannelAutoPost)
 
 * Chose a platform to deploy on:
 <details>
