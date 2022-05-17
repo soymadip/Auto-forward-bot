@@ -56,10 +56,12 @@ async def _(event):
             elif event.media:
                 try:
                     if event.media.webpage:
+                        await asyncio.sleep(2)
                         await datgbot.send_message(tochnl, event.text, link_preview = False)
                         return
                 except:
                     media = event.media.document
+                    await asyncio.sleep(2)
                     await datgbot.send_file(tochnl, media, caption = event.text, link_preview = False)
                     return
             else:
