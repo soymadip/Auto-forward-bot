@@ -41,26 +41,24 @@ async def _(event):
     await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-post bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time. Kindly deploy your own bot.\n\n[More bots](https://t.me/its_xditya)..", buttons=[Button.url("Repo", url="https://github.com/xditya/ChannelAutoForwarder"), Button.url("Dev", url="https://t.me/its_xditya")], link_preview=False)
 
 
-@datgbot.on(events.NewMessage(pattern="/help"))
+@datgbot.on(events.NewMessage(pattern="/info"))
 async def helpp(event):
-    await event.reply("**Help**\n\nThis bot will send all new posts in one channel to the other channel. (without forwarded tag)!\nIt can be used only in two channels at a time, so kindly deploy your own bot from [here](https://github.com/soymadip).\n\nAdd me to both the channels and make me an admin in both, and all new messages would be autoposted on the linked channel!!\n\nLiked the bot? Drop a ♥ to @xditya_Bot :)")
+    await event.reply("**Info**\n\nThis bot will send all new posts in one channel to the other channel. (without forwarded tag)!\nIt can be used only in two channels at a time, so kindly deploy your own bot from [here](https://github.com/soymadip).\n\nAdd me to both the channels and make me an admin in both, and all new messages would be autoposted on the linked channel!!\n\nLiked the bot? Drop a ♥ to @xditya_Bot :)")
 
 @datgbot.on(events.NewMessage(incoming=True, chats=frm)) 
 async def _(event): 
     if not event.is_private:
         try:
             if event.poll:
-                return
+                print("skipped poll.")
             if event.sticker:
-                return
+                print("skipped sticker.")
             if event.photo:
                 print("skipped pic.")
             elif event.media:
                 try:
                     if event.media.webpage:
-                        await asyncio.sleep(1)
-                        await datgbot.send_message(tochnl, event.text, link_preview = False)
-                        return
+                        print("skipped links.")
                 except:
                     media = event.media.document
                     await asyncio.sleep(1)
@@ -73,5 +71,5 @@ async def _(event):
 
 
 print("Bot has started.")
-print("Do visit @its_xditya..")
+print("Do visit me..")
 datgbot.run_until_disconnected()
