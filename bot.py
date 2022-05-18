@@ -8,9 +8,7 @@
 #    This program is distributed in the hope that it will be useful, but 
 #    WITHOUT ANY WARRANTY; without even the implied warranty of 
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
-#    General Public License for more details.
-# 
-#    License can be found in < https://github.com/xditya/ChannelAutoForwarder/blob/main/License> .
+#    General Public License for more details. 07
 
 import logging
 import asyncio
@@ -52,7 +50,7 @@ async def _(event):
             if event.poll:
                 print("skipped poll.")
             if event.sticker:
-                print("skipped sticker.")
+                return
             if event.photo:
                 print("skipped pic.")
             elif event.media:
