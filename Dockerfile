@@ -1,4 +1,5 @@
 FROM python:3.9
+git clone https://github.com/xditya/ChannelAutoPost
 WORKDIR /app
 COPY . /app/
 RUN pip install -r requirements.txt
