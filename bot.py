@@ -24,12 +24,12 @@ except:
 @datgbot.on(events.NewMessage(pattern="/run"))
 async def _(event):
     ok = await datgbot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-forward bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time.", buttons=[Button.url("Repo", url="https://github.com"), Button.url("Dev", url="https://t.me/cinemaforyou07")], link_preview=False)
+    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-forward bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time.", buttons=[Button.url("web", url="https://github.com"), Button.url("Group", url="https://t.me/cinemaforyou07")], link_preview=False)
 
 
 @datgbot.on(events.NewMessage(pattern="/info"))
 async def helpp(event):
-    await event.reply("**Info**\n\nThis bot will send all new posts in one channel to the other channel. (without forwarded tag)!\nIt can be used only in two channels at a time, so kindly deploy your own bot from [here](https://github.com/soymadip).\n\nAdd me to both the channels and make me an admin in both, and all new messages would be autoposted on the linked channel!!\n\nLiked the bot? Drop a ♥ to @xditya_Bot :)")
+    await event.reply("**Info**\n\nThis bot will send all new posts in one channel to the other channel. (without forwarded tag)!\nIt can be used only in two channels at a time, so kindly deploy your own bot from [here](https://github.com/soymadip).\n\nAdd me to both the channels and make me an admin in both, and all new messages would be autoposted on the linked channel!!", link_preview=False)
 
 @datgbot.on(events.NewMessage(incoming=True, chats=frm)) 
 async def _(event): 
