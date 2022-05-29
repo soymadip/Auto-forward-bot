@@ -14,7 +14,7 @@ try:
     bottoken = config("BOT_TOKEN")
     frm = config("FROM_CHANNEL", cast=int)
     tochnl = config("TO_CHANNEL", cast=int)
-    datgbot = TelegramClient('bot', apiid, apihash)
+    datgbot = TelegramClient('bot', apiid, apihash).start(bot_token=bottoken)
 except:
     print("Environment vars are missing! Kindly recheck.")
     print("Bot is quiting...")
