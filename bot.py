@@ -24,7 +24,7 @@ except:
 @datgbot.on(events.NewMessage(pattern="/run"))
 async def _(event):
     ok = await datgbot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-post bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time. Kindly deploy your own bot.\n\n[More bots](https://t.me/its_xditya)..", buttons=[Button.url("Repo", url="https://github.com/xditya/ChannelAutoForwarder"), Button.url("Dev", url="https://t.me/its_xditya")], link_preview=False)
+    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-forward bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time.", buttons=[Button.url("Repo", url="https://github.com"), Button.url("Dev", url="https://t.me/cinemaforyou07")], link_preview=False)
 
 
 @datgbot.on(events.NewMessage(pattern="/info"))
@@ -56,6 +56,6 @@ async def _(event):
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
 
-print("Bot has started.")
+print("Bot has started.") 
 print("Do visit me..")
 datgbot.run_until_disconnected()
