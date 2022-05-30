@@ -47,8 +47,7 @@ async def _(event):
                         print("skipped links.")
                 except:
                     media = event.media.document
-                    await asyncio.sleep(1)
-                    await datgbot.send_file(tochnl, media, caption = event.file.name, link_preview = False)
+                    await datgbot.send_file(tochnl, media, caption = `event.file.name`, link_preview = False)
                     return
             else:
                 print("skipped text.")
