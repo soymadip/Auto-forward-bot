@@ -13,9 +13,7 @@ try:
     apihash = config("API_HASH")
     bottoken = config("BOT_TOKEN")
     frm = config("FROM_CHANNEL", cast=int)
-    frm2 = config("FROM_CHANNEL2", cast=int)
     tochnl = config("TO_CHANNEL", cast=int)
-    tochnl2 = config("TO_CHANNEL2", cast=int)
     datgbot = TelegramClient('bot', apiid, apihash).start(bot_token=bottoken)
 except:
     print("Environment vars are missing! Kindly recheck.")
@@ -55,32 +53,6 @@ async def _(event):
                 print("skipped text.")
         except:
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
-
-
-
-@datgbot.on(events.NewMessage(incoming=True, chats=frm2)) 
-async def sd(event): 
-    if not event.is_private:
-        try:
-            if event.poll:
-                return
-            if event.photo:
-                photo = event.media.photo
-                await datgbot.send_file(tochnl2, photo, caption = event.text, link_preview = False)
-            elif event2.media:
-                try:
-                    if event.media.webpage:
-                        await datgbot.send_message(tochnl2, event.text, link_preview = False)
-                        return
-                except:
-                    media = event.media.document
-                    await datgbot.send_file(tochnl2, media, caption = f"`{event.file.name}`", link_preview = False)
-                    return
-            else:
-                await datgbot.send_message(tochnl2, event.text, link_preview = False)
-        except:
-            print("TO_CHANNEL2 ID is wrong or I can't send messages there (make me admin).")
-
 
 
 
