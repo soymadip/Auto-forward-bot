@@ -13,7 +13,9 @@ try:
     apihash = config("API_HASH")
     bottoken = config("BOT_TOKEN")
     frm = config("FROM_CHANNEL", cast=int)
+    frm2 = config("FROM_CHANNEL2", cast=int)
     tochnl = config("TO_CHANNEL", cast=int)
+    tochnl2 = config("TO_CHANNEL2", cast=int)
     datgbot = TelegramClient('bot', apiid, apihash).start(bot_token=bottoken)
 except:
     print("Environment vars are missing! Kindly recheck.")
@@ -24,7 +26,7 @@ except:
 @datgbot.on(events.NewMessage(pattern="/run"))
 async def _(event):
     ok = await datgbot(GetFullUserRequest(event.sender_id))
-    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-forward bot!! Read /help to know more!\n\nI can be used in only two channels (one user) at a time.", buttons=[Button.url("web", url="https://github.com"), Button.url("Group", url="https://t.me/cinemaforyou07")], link_preview=False)
+    await event.reply(f"Hi `{ok.user.first_name}`!\n\nI am a channel auto-forward bot!! Read /info to know more!\n\nI can be used in only two channels (one user) at a time.", buttons=[Button.url("web", url="https://github.com"), Button.url("Group", url="https://t.me/cinemaforyou07")], link_preview=False)
 
 
 @datgbot.on(events.NewMessage(pattern="/info"))
@@ -55,6 +57,32 @@ async def _(event):
             print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
 
-print("Bot has started.") 
-print("Do visit me..")
+
+@datgbot.on(events.NewMessage(incoming=True, chats=frm2)) 
+async def _(event): 
+    if not event.is_private:
+        try:
+            if event.poll:
+                return
+            if event.photo:
+                photo = event.media.photo
+                await datgbot.send_file(tochnl2, photo, caption = event.text, link_preview = False)
+            elif event.media:
+                try:
+                    if event.media.webpage:
+                        await datgbot.send_message(tochnl2, event.text, link_preview = False)
+                        return
+                except:
+                    media = event.media.document
+                    await datgbot.send_file(tochnl2, media, caption = f"`{event.file.name}`", link_preview = False)
+                    return
+            else:
+                await datgbot.send_message(tochnl2, event.text, link_preview = False)
+        except:
+            print("TO_CHANNEL2 ID is wrong or I can't send messages there (make me admin).")
+
+
+
+
+print("Bot started.")
 datgbot.run_until_disconnected()
