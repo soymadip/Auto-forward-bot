@@ -59,7 +59,7 @@ async def _(event):
 
 
 @datgbot.on(events.NewMessage(incoming=True, chats=frm2)) 
-async def _(event): 
+async def __(event): 
     if not event.is_private:
         try:
             if event.poll:
