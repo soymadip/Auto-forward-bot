@@ -6,5 +6,6 @@ services:
       APP_ID: $API_ID  # defaults to None
       API_HASH: $API_HASH
       BOT_TOKEN: $BOT_TOKEN
+      SESSION: $SESSION
       FROM_CHANNEL: $FROM_CHANNEL
       TO_CHANNEL: $TO_CHANNEL
