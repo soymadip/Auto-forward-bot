@@ -17,6 +17,7 @@ try:
     SESSION = config("SESSION")
     #datgbot = TelegramClient('bot', apiid, apihash).start(bot_token=bottoken)
     datgbot = TelegramClient(StringSession(SESSION), apiid, apihash)
+    datgbot.start()
 except:
     print("Environment vars are missing! Kindly recheck.")
     print("Bot is quiting...")
